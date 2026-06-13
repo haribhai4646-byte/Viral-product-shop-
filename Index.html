@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viral Product Shop</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f8f9fa;
+color:#222;
+}
+
+.hero{
+height:100vh;
+background:url('https://i.ibb.co/1t8XbRPM/4910241.jpg') center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.55);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+color:#fff;
+padding:20px;
+}
+
+.hero h1{
+font-size:3rem;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:1.2rem;
+margin-bottom:20px;
+}
+
+.shop-btn{
+background:#ff5722;
+color:white;
+padding:14px 30px;
+border:none;
+border-radius:50px;
+font-size:18px;
+cursor:pointer;
+text-decoration:none;
+}
+
+.section-title{
+text-align:center;
+padding:40px 0 20px;
+font-size:2rem;
+}
+
+.products-section{
+padding:20px;
+}
+
+.carousel{
+display:flex;
+overflow-x:auto;
+gap:20px;
+scroll-behavior:smooth;
+padding-bottom:15px;
+}
+
+.carousel::-webkit-scrollbar{
+display:none;
+}
+
+.card{
+min-width:280px;
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.card img{
+width:100%;
+height:280px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.price{
+font-size:20px;
+font-weight:700;
+color:#ff5722;
+margin-bottom:10px;
+}
+
+.add-btn{
+width:100%;
+padding:12px;
+background:#111;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.cart-btn{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#ff5722;
+color:white;
+width:65px;
+height:65px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:26px;
+cursor:pointer;
+z-index:999;
+}
+
+.cart-count{
+position:absolute;
+top:-5px;
+right:-5px;
+background:red;
+color:white;
+width:24px;
+height:24px;
+border-radius:50%;
+font-size:13px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.cart-modal{
+position:fixed;
+top:0;
+right:-100%;
+width:100%;
+max-width:400px;
+height:100%;
+background:white;
+box-shadow:-5px 0 15px rgba(0,0,0,.2);
+transition:.3s;
+padding:20px;
+overflow:auto;
+z-index:1000;
+}
+
+.cart-modal.active{
+right:0;
+}
+
+.cart-item{
+padding:10px 0;
+border-bottom:1px solid #ddd;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+.send-btn{
+width:100%;
+padding:14px;
+background:#28a745;
+color:white;
+border:none;
+border-radius:8px;
+margin-top:15px;
+cursor:pointer;
+}
+
+.close-btn{
+float:right;
+cursor:pointer;
+font-size:22px;
+}
+
+footer{
+text-align:center;
+padding:30px;
+margin-top:30px;
+background:#111;
+color:white;
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Viral Product Shop</h1>
+<p>COD Available • Best Prices • Offer For All Time</p>
+<a href="#products" class="shop-btn">Shop Now</a>
+</div>
+</section>
+
+<section id="products" class="products-section">
+<h2 class="section-title">Trending Products</h2>
+
+<div class="carousel">
+
+<div class="card">
+<img src="https://i.ibb.co/DPqk89bd/lv-0-20260608193017.jpg">
+<div class="card-content">
+<h3>Premium Pendant</h3>
+<div class="price">₹499</div>
+<button class="add-btn" onclick="addToCart('Premium Pendant',499)">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://i.ibb.co/CsSS4hYb/IMG-20260613-093218.png">
+<div class="card-content">
+<h3>Luxury Pendant</h3>
+<div class="price">₹599</div>
+<button class="add-btn" onclick="addToCart('Luxury Pendant',599)">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://i.ibb.co/Xf9qvm9p/Picsart-26-06-13-09-31-41-765.png">
+<div class="card-content">
+<h3>Couple Pendant</h3>
+<div class="price">₹699</div>
+<button class="add-btn" onclick="addToCart('Couple Pendant',699)">Add to Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://i.ibb.co/cKDy7vW5/file-0000000005c47207981e02b75be5a5cf.png">
+<div class="card-content">
+<h3>Heart Pendant</h3>
+<div class="price">₹799</div>
+<button class="add-btn" onclick="addToCart('Heart Pendant',799)">Add to Cart</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<div class="cart-btn" onclick="toggleCart()">
+🛒
+<div class="cart-count" id="cartCount">0</div>
+</div>
+
+<div class="cart-modal" id="cartModal">
+<span class="close-btn" onclick="toggleCart()">✖</span>
+
+<h2>Your Cart</h2>
+
+<div id="cartItems"></div>
+
+<input type="text" id="customerName" placeholder="Customer Name">
+
+<input type="text" id="customerPhone" placeholder="Phone Number">
+
+<button class="send-btn" onclick="sendOrder()">
+Send Order
+</button>
+</div>
+
+<footer>
+<p>Contact: haribhai4646@gmail.com</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init("YOUR_PUBLIC_KEY");
+
+let cart=[];
+
+function addToCart(name,price){
+cart.push({name,price});
+updateCart();
+}
+
+function updateCart(){
+
+document.getElementById("cartCount").innerText=cart.length;
+
+let html="";
+
+cart.forEach(item=>{
+html+=`
+<div class="cart-item">
+<strong>${item.name}</strong><br>
+₹${item.price}
+</div>`;
+});
+
+document.getElementById("cartItems").innerHTML=html;
+}
+
+function toggleCart(){
+document.getElementById("cartModal").classList.toggle("active");
+}
+
+function sendOrder(){
+
+const name=document.getElementById("customerName").value;
+const phone=document.getElementById("customerPhone").value;
+
+if(!name || !phone){
+alert("Please enter name and phone number");
+return;
+}
+
+if(cart.length===0){
+alert("Cart is empty");
+return;
+}
+
+let orderList=cart.map(item=>
+`${item.name} - ₹${item.price}`
+).join("\n");
+
+const params={
+customer_name:name,
+customer_phone:phone,
+order_details:orderList,
+to_email:"haribhai4646@gmail.com"
+};
+
+emailjs.send(
+"YOUR_SERVICE_ID",
+"YOUR_TEMPLATE_ID",
+params
+)
+.then(function(){
+alert("Order Sent Successfully!");
+cart=[];
+updateCart();
+document.getElementById("customerName").value="";
+document.getElementById("customerPhone").value="";
+})
+.catch(function(error){
+alert("Error sending order");
+console.log(error);
+});
+}
+</script>
+
+</body>
+  </html>
